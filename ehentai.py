@@ -6,7 +6,7 @@ import re
 import os
 
 
-indexUrl = input("è«‹è¼¸å…¥ä½œå“ç¶²å€|Please Enter the Adress of the Artworkï¼š") or 'https://e-hentai.org/g/928151/e8de7d62e1/'
+indexUrl = input("Õˆİ”Èë×÷Æ·¾WÖ·|Please Enter the Adress of the Artwork£º") or 'https://e-hentai.org/g/928151/e8de7d62e1/'
 option = FirefoxOptions()
 driver = webdriver.Firefox()
 #driver = webdriver.Chrome()
@@ -16,10 +16,10 @@ driver.implicitly_wait(10)
 
 
 def getPage(pageNow):
-    # è·å–å½“å‰URLçš„HTMLé¡µé¢
+    # »ñÈ¡µ±Ç°URLµÄHTMLÒ³Ãæ
     htmlNow = driver.page_source
     #print(htmlNow)
-    # ä½¿ç”¨lxmlåº“çš„xpathæŸ¥æ‰¾scriptå…ƒç´ çš„å†…å®¹ï¼ˆæå‰è§‚å¯Ÿå‰ç¨‹æ— å¿§æœç´¢ç»“æœé¡µé¢æºä»£ç çš„ç»“æ„ï¼Œå¯ä»¥å‘ç°å²—ä½åˆ—è¡¨åœ¨scriptä¸­ï¼‰
+    # Ê¹ÓÃlxml¿âµÄxpath²éÕÒscriptÔªËØµÄÄÚÈİ£¨ÌáÇ°¹Û²ìÇ°³ÌÎŞÓÇËÑË÷½á¹ûÒ³ÃæÔ´´úÂëµÄ½á¹¹£¬¿ÉÒÔ·¢ÏÖ¸ÚÎ»ÁĞ±íÔÚscriptÖĞ£©
     imgNow = re.search('<img id="img" src="(.+?)"', htmlNow)
     if(pageNow <=10):
         pageNow = '00' + str(pageNow)
@@ -33,63 +33,73 @@ def getPage(pageNow):
     #a = requests.get(url=imgNow[1], headers=HEADERS, verify=False)
     #f = open('/image/'+name, 'wb')
     #f.write(a.content)
-    #f.close()  # å°†å›¾ç‰‡ä¿å­˜ä¸ºname
+    #f.close()  # ½«Í¼Æ¬±£´æÎªname
 
-def mkdir(s):  # åˆ›å»ºæ–‡ä»¶å¤¹
-    isExists = os.path.exists(s)  # åˆ¤æ–­æ˜¯å¦åˆ›å»ºäº†æ–‡ä»¶å¤¹
+def mkdir(s):  # ´´½¨ÎÄ¼ş¼Ğ
+    isExists = os.path.exists(s)  # ÅĞ¶ÏÊÇ·ñ´´½¨ÁËÎÄ¼ş¼Ğ
     if not isExists:
-        os.makedirs(s)  # åˆ›å»ºæ–‡ä»¶å¤¹
-        print("å‰µå»ºæ–‡ä»¶å¤¾'%s'ï¼Œæ–‡ä»¶æœƒè¢«ä¿å­˜æ–¼æ­¤|Have created '%s', pictures will be saved here." % (s, s))
+        os.makedirs(s)  # ´´½¨ÎÄ¼ş¼Ğ
+        print("„“½¨ÎÄ¼şŠA'%s'£¬ÎÄ¼ş•ş±»±£´æì¶´Ë|Have created '%s', pictures will be saved here." % (s, s))
     else:
-        print("å·²ç¶“æœ‰'%s'æ–‡ä»¶å¤¾ï¼Œæ–‡ä»¶æœƒè¢«ä¿å­˜æ–¼æ­¤|'%s' already exists, pictures will be saved here." % (s, s))
+        print("ÒÑ½›ÓĞ'%s'ÎÄ¼şŠA£¬ÎÄ¼ş•ş±»±£´æì¶´Ë|'%s' already exists, pictures will be saved here." % (s, s))
 
 def screen_shot(url,name):
-    # ä½¿ç”¨webdirver.PhantomJS()æ–¹æ³•æ–°å»ºä¸€ä¸ªphantomjsçš„å¯¹è±¡ï¼Œè¿™é‡Œä¼šä½¿ç”¨åˆ°phantomjs.exeï¼Œç¯å¢ƒå˜é‡pathä¸­æ‰¾ä¸åˆ°phantomjs.exeï¼Œåˆ™ä¼šæŠ¥é”™
+    # Ê¹ÓÃwebdirver.PhantomJS()·½·¨ĞÂ½¨Ò»¸öphantomjsµÄ¶ÔÏó£¬ÕâÀï»áÊ¹ÓÃµ½phantomjs.exe£¬»·¾³±äÁ¿pathÖĞÕÒ²»µ½phantomjs.exe£¬Ôò»á±¨´í
 
-    # ä½¿ç”¨get()æ–¹æ³•ï¼Œæ‰“å¼€æŒ‡å®šé¡µé¢ã€‚æ³¨æ„è¿™é‡Œæ˜¯phantomjsæ˜¯æ— ç•Œé¢çš„ï¼Œæ‰€ä»¥ä¸ä¼šæœ‰ä»»ä½•é¡µé¢æ˜¾ç¤º
+    # Ê¹ÓÃget()·½·¨£¬´ò¿ªÖ¸¶¨Ò³Ãæ¡£×¢ÒâÕâÀïÊÇphantomjsÊÇÎŞ½çÃæµÄ£¬ËùÒÔ²»»áÓĞÈÎºÎÒ³ÃæÏÔÊ¾
     driver.get(url)
-    # è®¾ç½®phantomjsæµè§ˆå™¨å…¨å±æ˜¾ç¤º
+    # ÉèÖÃphantomjsä¯ÀÀÆ÷È«ÆÁÏÔÊ¾
     driver.maximize_window()
-    # ä½¿ç”¨save_screenshotå°†æµè§ˆå™¨æ­£æ–‡éƒ¨åˆ†æˆªå›¾ï¼Œå³ä½¿æ­£æ–‡æœ¬åˆ†æ— æ³•ä¸€é¡µæ˜¾ç¤ºå®Œå…¨ï¼Œsave_screenshotä¹Ÿå¯ä»¥å®Œå…¨æˆªå›¾
+    # Ê¹ÓÃsave_screenshot½«ä¯ÀÀÆ÷ÕıÎÄ²¿·Ö½ØÍ¼£¬¼´Ê¹ÕıÎÄ±¾·ÖÎŞ·¨Ò»Ò³ÏÔÊ¾ÍêÈ«£¬save_screenshotÒ²¿ÉÒÔÍêÈ«½ØÍ¼
     driver.find_element_by_xpath('//body/img[1]').screenshot(name)
-    # å…³é—­phantomjsæµè§ˆå™¨ï¼Œä¸è¦å¿½ç•¥äº†è¿™ä¸€æ­¥ï¼Œå¦åˆ™ä½ ä¼šåœ¨ä»»åŠ¡æµè§ˆå™¨ä¸­å‘ç°è®¸å¤šä»»åŠ¡
+    # ¹Ø±Õphantomjsä¯ÀÀÆ÷£¬²»ÒªºöÂÔÁËÕâÒ»²½£¬·ñÔòÄã»áÔÚÈÎÎñä¯ÀÀÆ÷ÖĞ·¢ÏÖĞí¶àÈÎÎñ
     driver.close()
 
 
-# è·³è½¬è‡³ç›®æ ‡åŸå¸‚ç½‘é¡µ
+# Ìø×ªÖÁÄ¿±ê³ÇÊĞÍøÒ³
 
 driver.get(indexUrl)
-# ç‚¹å‡»æœç´¢ï¼Œç½‘é¡µè·³è½¬è‡³æœç´¢ç»“æœé¡µé¢
+# µã»÷ËÑË÷£¬ÍøÒ³Ìø×ªÖÁËÑË÷½á¹ûÒ³Ãæ
 time.sleep(1)
 mainhtml = driver.page_source
 firstpage = re.search('no-repeat"><a href="(.+?)"><img alt=', mainhtml)
 artwork = re.search('<h1 id="gn">(.+?)</h1>', mainhtml)
 artworkName = artwork[1]
+invalid_chars = '[\\\/:*?"<>|]'
+replace_char = '-'
+artworkName = re.sub(invalid_chars, replace_char, artworkName)
 filename = "./"+ artworkName +"/"
 mkdir(filename)
-# ç­‰å¾…1ç§’
+# µÈ´ı1Ãë
 time.sleep(1)
 print(firstpage[1])
 driver.get(firstpage[1])
 
 
-# å®šä¹‰æ ¹æ®é¡µé¢çš„indexè·å–é¡µé¢èŒä½åˆ—è¡¨çš„å‡½æ•°
+# ¶¨Òå¸ù¾İÒ³ÃæµÄindex»ñÈ¡Ò³ÃæÖ°Î»ÁĞ±íµÄº¯Êı
 
-# è·å–å½“å‰URLçš„HTMLé¡µé¢
+# »ñÈ¡µ±Ç°URLµÄHTMLÒ³Ãæ
 time.sleep(1)
 html = driver.page_source
 #print(html)
 
 total_page_str = re.search('/ <span>(.+?)</span>', html)
-# æ­£åˆ™è¡¨è¾¾å¼è·å–æœç´¢ç»“æœæ€»é¡µæ•°,å¯ä»¥åŒ¹é…1ä½æ•°ï¼Œä¸¤ä½æ•°ï¼Œä¸‰ä½æ•°ï¼Œå››ä½æ•°ï¼Œäº”ä½æ•°ï¼Œå¯ä»¥æ¶µç›–æ‰€æœ‰å¯èƒ½æ€§äº†
+# ÕıÔò±í´ïÊ½»ñÈ¡ËÑË÷½á¹û×ÜÒ³Êı,¿ÉÒÔÆ¥Åä1Î»Êı£¬Á½Î»Êı£¬ÈıÎ»Êı£¬ËÄÎ»Êı£¬ÎåÎ»Êı£¬¿ÉÒÔº­¸ÇËùÓĞ¿ÉÄÜĞÔÁË
 total_page = int(total_page_str[1])
-print("å…± %s é¡µ" %total_page)
+print("¹² %s Ò³" %total_page)
 
 for pageNow in range(1,total_page+1):
 #for pageNow in range(1, 501):
-    print("æ­£åœ¨çˆ¬å– %s é¡µï¼Œå…± %s é¡µ" %(pageNow, total_page))
+    print("ÕıÔÚÅÀÈ¡ %s Ò³£¬¹² %s Ò³" %(pageNow, total_page))
     time.sleep(5)
-    getPage(pageNow)
-    driver.find_elements_by_tag_name('a')[2].click()
+    try:
+        getPage(pageNow)
+        driver.find_elements_by_tag_name('a')[2].click()
+    except:
+        print("ERR: %s ÏÂÔØÊ§°Ü, ½«ÖØÊÔ" % pageNow)
+        time.sleep(3)
+        driver.refresh()
+        total_page = total_page-1
+
 
 driver.quit()
